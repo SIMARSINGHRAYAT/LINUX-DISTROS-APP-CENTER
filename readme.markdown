@@ -4,17 +4,17 @@
 
 <p align="center">
   <a href="#-supported-linux-distributions"><img src="https://img.shields.io/badge/Platform-Linux%20Universal-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Universal Linux" /></a>
-  <a href="#-curated-application-catalog"><img src="https://img.shields.io/badge/Catalog-AI%20%7C%20Enterprise%20%7C%20Streaming-00c2a8?style=for-the-badge" alt="Curated Catalog" /></a>
-  <a href="#-cross-distribution-architecture"><img src="https://img.shields.io/badge/Distros-Ubuntu%20%7C%20Debian%20%7C%20Kali%20%7C%20Fedora%20%7C%20Arch%20%7C%20Mint-ffb86c?style=for-the-badge" alt="Distributions" /></a>
-  <a href="#license"><img src="https://img.shields.io/badge/License-MIT%20%2F%20Open%20Source-6ee7b7?style=for-the-badge" alt="Open Source" /></a>
+  <a href="#-curated-application-catalog"><img src="https://img.shields.io/badge/Catalog-AI%20%7C%20Enterprise%20%7C%20Streaming%20%7C%20Games-00c2a8?style=for-the-badge" alt="Curated Catalog" /></a>
+  <a href="#-supported-linux-distributions"><img src="https://img.shields.io/badge/Distros-Ubuntu%20%7C%20Debian%20%7C%20Kali%20%7C%20Fedora%20%7C%20Arch%20%7C%20Mint-ffb86c?style=for-the-badge" alt="Distributions" /></a>
+  <a href="#-license--legal-notice"><img src="https://img.shields.io/badge/License-MIT%20%2F%20Open%20Source-6ee7b7?style=for-the-badge" alt="Open Source" /></a>
   <img src="https://img.shields.io/badge/Architecture-x86__64%20%7C%20AArch64-9a9cff?style=for-the-badge" alt="Architecture" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/stargazers"><img src="https://img.shields.io/github/stars/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS?style=social" alt="GitHub stars" /></a>
-  <a href="https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/network/members"><img src="https://img.shields.io/github/forks/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS?style=social" alt="GitHub forks" /></a>
-  <a href="https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/issues"><img src="https://img.shields.io/github/issues/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS?color=blue" alt="GitHub issues" /></a>
-  <a href="https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/pulls"><img src="https://img.shields.io/github/issues-pr/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS?color=brightgreen" alt="GitHub pull requests" /></a>
+  <a href="https://github.com/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER/stargazers"><img src="https://img.shields.io/github/stars/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER?style=social" alt="GitHub stars" /></a>
+  <a href="https://github.com/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER/network/members"><img src="https://img.shields.io/github/forks/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER?style=social" alt="GitHub forks" /></a>
+  <a href="https://github.com/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER/issues"><img src="https://img.shields.io/github/issues/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER?color=blue" alt="GitHub issues" /></a>
+  <a href="https://github.com/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER/pulls"><img src="https://img.shields.io/github/issues-pr/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER?color=brightgreen" alt="GitHub pull requests" /></a>
   <img src="https://img.shields.io/badge/Maintenance-Active-success" alt="Maintenance Active" />
   <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen" alt="PRs Welcome" />
 </p>
@@ -24,7 +24,7 @@
 # 🐧 LINUX-DISTROS-APP-CENTER
 
 > **The Universal Desktop Application Hub & Native Software Catalog for All Major Linux Distributions.**  
-> *Bridging the gap between cutting-edge AI suites, enterprise productivity ecosystems, and 4K streaming entertainment on Linux.*
+> *Bridging the gap between cutting-edge AI suites, enterprise productivity ecosystems, 4K streaming, and gaming on Linux.*
 
 **LINUX-DISTROS-APP-CENTER** is an open-source, universal application ecosystem engineered specifically for the global Linux community. Whether you are running **Ubuntu, Debian, Kali Linux, Fedora, Arch Linux, Linux Mint, or Pop!_OS**, this platform delivers instant access to essential desktop software with native system launchers, clean desktop environment integration, and automated single-command installation.
 
@@ -48,23 +48,23 @@ Linux powers the modern world—from cloud servers and supercomputers to space e
 `LINUX-DISTROS-APP-CENTER` is intentionally architected to empower diverse global communities:
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│                      LINUX-DISTROS-APP-CENTER                          │
-├─────────────────┬───────────────────┬──────────────────┬───────────────┤
-│  🤖 AI & DATA   │  💼 ENTERPRISE    │  🎬 STREAMING &  │  💻 DEV &     │
-│    SCIENTISTS   │   PROFESSIONALS   │   ENTERTAINMENT  │  MIGRATORS    │
-├─────────────────┼───────────────────┼──────────────────┼───────────────┤
-│ • Jupyter       │ • Microsoft Teams │ • Netflix        │ • GitHub      │
-│ • Google Colab  │ • Power BI        │ • Prime Video    │ • GitLab      │
-│ • Hugging Face  │ • Outlook         │ • Apple TV+      │ • LeetCode    │
-│ • Kaggle        │ • Azure Portal    │ • Crunchyroll    │ • Codeforces  │
-│ • Roboflow      │ • Whiteboard      │ • JioHotstar     │ • GitHub      │
-│ • Qwen & Kimi   │                   │ • MX Player      │   Desktop     │
-└─────────────────┴───────────────────┴──────────────────┴───────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│                                LINUX-DISTROS-APP-CENTER                                 │
+├─────────────────────┬───────────────────┬──────────────────┬──────────────┬─────────────┤
+│    🤖 AI & DATA     │  💼 ENTERPRISE    │  🎬 STREAMING &  │  💻 DEV &    │  🎮 GAMING  │
+│      SCIENTISTS     │   PROFESSIONALS   │   ENTERTAINMENT  │  MIGRATORS   │  & ESPORTS  │
+├─────────────────────┼───────────────────┼──────────────────┼──────────────┼─────────────┤
+│ • Copilot Desktop   │ • Microsoft Teams │ • Netflix        │ • GitHub     │ • GTA 5     │
+│ • Grok AI & Meta AI │ • Power BI        │ • Prime Video    │ • GitLab     │   Launcher  │
+│ • Jupyter & Colab   │ • Outlook         │ • Apple TV+      │ • LeetCode   │             │
+│ • Hugging Face      │ • Azure Portal    │ • Crunchyroll    │ • Codeforces │             │
+│ • Kaggle & Roboflow │ • Whiteboard      │ • JioHotstar     │ • GitHub     │             │
+│ • Qwen & Kimi       │                   │ • MX Player      │   Desktop    │             │
+└─────────────────────┴───────────────────┴──────────────────┴──────────────┴─────────────┘
 ```
 
 ### 1. 🤖 AI Engineers & Data Scientists
-- **Dedicated Workspaces:** Launch **JupyterLab**, **Google Colab**, **Hugging Face Hub**, **Kaggle**, **Roboflow**, **Qwen AI**, and **Kimi AI** directly as standalone applications without wrestling with browser tabs or browser memory leaks.
+- **Dedicated Workspaces:** Launch **Microsoft Copilot**, **Grok AI**, **Meta AI**, **JupyterLab**, **Google Colab**, **Hugging Face Hub**, **Kaggle**, **Roboflow**, **Qwen AI**, and **Kimi AI** directly as standalone applications without wrestling with browser tabs or browser memory leaks.
 - **Persistent GPU & Local Integration:** Optimized for machine learning workflows with immediate terminal access and dataset management.
 
 ### 2. 💼 Enterprise Teams & Office Professionals
@@ -104,6 +104,9 @@ Linux powers the modern world—from cloud servers and supercomputers to space e
 
 | Application | Ecosystem | Core Capabilities |
 | :--- | :--- | :--- |
+| **Microsoft Copilot** | Generative AI & Code | Dedicated desktop Copilot assistant for conversational assistance, code generation, and task automation. |
+| **Grok AI** | Real-Time Intelligence | xAI's conversational AI assistant with live search, reasoning, and multimodal capabilities. |
+| **Meta AI** | Llama Foundation Models | Meta's Llama-powered AI assistant for deep research, coding, and creative problem solving. |
 | **Jupyter** | AI / Data Science | Interactive notebooks, Python/R kernel management, scientific visualization. |
 | **Google Colab** | Cloud Machine Learning | Free GPU/TPU notebook execution, PyTorch/TensorFlow experiments in standalone desktop view. |
 | **Hugging Face** | AI Models & Datasets | Hub for open-weight LLMs, Transformers, diffusion models, and AI community spaces. |
@@ -133,7 +136,13 @@ Linux powers the modern world—from cloud servers and supercomputers to space e
 | **JioHotstar** | Live Sports & Entertainment | Cricket, football, international blockbusters, and high-energy regional cinema streaming. |
 | **MX Player** | Video & OTT | Multi-format local and cloud media playback with subtitle synchronization. |
 
-### 💻 Category 4: Developer Tools & Competitive Coding
+### 🎮 Category 4: Gaming & Entertainment
+
+| Application | Ecosystem | Core Capabilities |
+| :--- | :--- | :--- |
+| **GTA 5 Launcher** | Gaming & Simulation | High-performance Electron launcher with WebGPU acceleration and optimized memory management. |
+
+### 💻 Category 5: Developer Tools & Competitive Coding
 
 | Application | Ecosystem | Core Capabilities |
 | :--- | :--- | :--- |
@@ -172,7 +181,7 @@ Every application includes an optimized, non-interactive installation command. R
 
 ```bash
 # Example: Deploy Microsoft Power BI Desktop on your Linux distribution
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
+curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
 ```
 
 *(Replace `ubuntu` with `debian`, `mint`, `fedora`, `arch`, or `kali` to match your active system).*
@@ -185,7 +194,7 @@ Need to remove an application? Every app provides an exact inverse removal scrip
 
 ```bash
 # Example: Completely remove application and desktop launchers
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
+curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
 ```
 
 ---
@@ -216,9 +225,10 @@ For search engine indexing, global outreach, and GitHub community discovery:
 ```
 linux-app-center • linux-distros-app-center • linux-app-store • universal-linux-apps • ubuntu-desktop-apps 
 kali-linux-tools • arch-linux-apps • fedora-desktop • debian-desktop • linux-mint • pop-os • microsoft-teams-linux 
-powerbi-on-linux • outlook-linux • azure-portal-desktop • jupyterlab-desktop • google-colab-linux 
-huggingface-desktop • kaggle-linux • netflix-linux-app • prime-video-linux • apple-tv-linux • crunchyroll-linux 
-open-source-software • cross-distribution-packaging • flatpak-apps • wine-desktop-integration • desktop-linux-ecosystem
+copilot-linux • grok-ai-linux • meta-ai-desktop • powerbi-on-linux • outlook-linux • azure-portal-desktop 
+jupyterlab-desktop • google-colab-linux • huggingface-desktop • kaggle-linux • netflix-linux-app 
+prime-video-linux • apple-tv-linux • crunchyroll-linux • gta5-linux • open-source-software 
+cross-distribution-packaging • flatpak-apps • wine-desktop-integration • desktop-linux-ecosystem
 ```
 
 ---
