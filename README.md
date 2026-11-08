@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="LINUX-DISTROS-APP-CENTER Logo" width="180" />
+  <img src="Glossy%20Linux%20Distros%20App%20Centre%20Logo.png" alt="LINUX-DISTROS-APP-CENTER Logo" width="180" />
 </p>
 
 <h1 align="center">LINUX-DISTROS-APP-CENTER</h1>
