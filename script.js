@@ -96,7 +96,7 @@ const categories = [
 ];
 
 const floatingLogosList = [
-  './Glossy Linux Distros App Centre Logo.png',
+  './assets/Glossy Linux Distros App Centre Logo.png',
   './csc-main/logo/apple-tv.png',
   './csc-main/logo/codeforces.png',
   './csc-main/logo/Crunchyroll.png',

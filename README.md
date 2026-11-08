@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="Glossy%20Linux%20Distros%20App%20Centre%20Logo.png" alt="LINUX SHORTCUT CENTER" width="180" />
+  <img src="assets/Glossy%20Linux%20Distros%20App%20Centre%20Logo.png" alt="Linux Distros App Center" width="180" />
 </p>
 
-<h1 align="center">LINUX SHORTCUT CENTER</h1>
+<h1 align="center">LINUX DISTROS APP CENTER</h1>
 
 ---
 
@@ -47,11 +47,11 @@ Help empower the worldwide Linux ecosystem by sharing this platform across devel
 
 ## 💡 What is it?
 
-**LINUX SHORTCUT CENTER** is a comprehensive, centralized desktop application platform built to solve one of the most persistent hurdles on Linux: **software fragmentation and accessibility**.
+**Linux Distros App Center** is a comprehensive, centralized desktop application platform built to solve one of the most persistent hurdles on Linux: **software fragmentation and accessibility**.
 
 While Linux dominates the server, cloud, and engineering landscapes, desktop users frequently encounter difficulties accessing essential daily applications that either lack first-party native Linux packages or remain trapped in heavy, unintegrated browser tabs.
 
-**LINUX SHORTCUT CENTER** bridges this divide by delivering polished, standalone desktop shortcuts and native window wrappers for the modern web and desktop software suites you rely on every day:
+**Linux Distros App Center** bridges this divide by delivering polished, standalone desktop shortcuts and native window wrappers for the modern web and desktop software suites you rely on every day:
 
 ### 🤖 Artificial Intelligence & Data Science
 * **Microsoft Copilot** — AI-powered assistant for coding, writing, and rapid problem-solving.
@@ -89,7 +89,7 @@ While Linux dominates the server, cloud, and engineering landscapes, desktop use
 
 ## 🚀 How It Helps You
 
-Instead of dealing with convoluted workarounds, **LINUX SHORTCUT CENTER** transforms your day-to-day computing experience:
+Instead of dealing with convoluted workarounds, **Linux Distros App Center** transforms your day-to-day computing experience:
 
 * 🎯 **Frees You from Browser Tab Fatigue**  
   Keep your critical productivity, AI tools, and entertainment services in independent, dedicated desktop windows rather than buried under 50+ chaotic browser tabs.
@@ -146,7 +146,7 @@ Collaboration and community feedback drive this project forward:
 
 ## 💖 Support and Monetization
 
-If **LINUX SHORTCUT CENTER** saves you time, simplifies your workflow, or elevates your Linux desktop experience, please consider supporting future maintenance and development:
+If **Linux Distros App Center** saves you time, simplifies your workflow, or elevates your Linux desktop experience, please consider supporting future maintenance and development:
 
 <p align="left">
   <a href="https://github.com/sponsors/SIMARSINGHRAYAT"><img src="https://img.shields.io/badge/Sponsor%20on-GitHub-EA4AAA?style=for-the-badge&logo=github-sponsors&logoColor=white" alt="Sponsor on GitHub" /></a>
