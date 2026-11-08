@@ -1,8 +1,8 @@
 {
-  "name": "linux-desktop-apps",
+  "name": "linux-distros-app-center",
   "version": "1.0.0",
   "private": true,
-  "description": "Linux App Center static website for Linux desktop apps and install guides",
+  "description": "LINUX-DISTROS-APP-CENTER: Universal desktop application hub and catalog for Linux distributions",
   "scripts": {
     "dev": "python3 -m http.server 8000",
     "start": "python3 -m http.server 8000",
