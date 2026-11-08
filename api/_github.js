@@ -1,7 +1,14 @@
 const crypto = require('node:crypto');
 
 const OWNER = 'SIMARSINGHRAYAT';
-const REPOSITORY = 'LINUX-DESKTOP-APPS';
+const REPOSITORIES = [
+  'Linux-Shortcut-Center',
+  'GitHubCrazy.com',
+  'GitHubUniverse.com',
+  'GitHubUpgrade.com',
+  'LINUX-DISTROS-APP-CENTER'
+];
+const REPOSITORY = 'LINUX-DISTROS-APP-CENTER';
 const PROFILE = 'SIMARSINGHRAYAT';
 const DEFAULT_REDIRECT_URI = 'https://linuxdesktopapps11.vercel.app/api/auth/github/callback';
 
@@ -69,4 +76,4 @@ function json(response, status, body) {
   response.status(status).setHeader('Content-Type', 'application/json').send(JSON.stringify(body));
 }
 
-module.exports = { OWNER, REPOSITORY, PROFILE, redirectUri, cookieValue, sessionToken, setSession, clearSession, github, json };
+module.exports = { OWNER, REPOSITORIES, REPOSITORY, PROFILE, redirectUri, cookieValue, sessionToken, setSession, clearSession, github, json };

@@ -2,7 +2,7 @@
   "name": "linux-distros-app-center",
   "version": "1.0.0",
   "private": true,
-  "description": "LINUX SHORTCUT CENTER: Universal desktop application hub and catalog for Linux distributions",
+  "description": "Linux Distros App Center: Universal desktop application hub and catalog for Linux distributions",
   "scripts": {
     "dev": "python3 -m http.server 8000",
     "start": "python3 -m http.server 8000",

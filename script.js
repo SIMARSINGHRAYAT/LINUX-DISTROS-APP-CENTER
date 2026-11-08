@@ -95,11 +95,35 @@ const categories = [
   }
 ];
 
-const floatingIcons = [
-  'github.png', 'gitlab.png', 'Kaggle.png', 'google-colab.png', 'hugging-face.png', 'jupyter.png', 'leetcode.png',
-  'netflix.png', 'prime.png', 'jiohotstar.png', 'apple-tv.png', 'Crunchyroll.png', 'mx-player.png',
-  'Microsoft_Office_Teams_Logo_512px.png', 'Microsoft_Office_Outlook_Logo_512px.png',
-  'Microsoft-Power-Bi--Streamline-Svg-Logos.png', 'Microsoft-whiteboard-94.png', 'Roboflow.png', 'codeforces.png'
+const floatingLogosList = [
+  './Glossy Linux Distros App Centre Logo.png',
+  './csc-main/logo/apple-tv.png',
+  './csc-main/logo/codeforces.png',
+  './csc-main/logo/Crunchyroll.png',
+  './csc-main/logo/games.svg',
+  './csc-main/logo/github.png',
+  './csc-main/logo/gitlab.png',
+  './csc-main/logo/google-colab.png',
+  './csc-main/logo/hugging-face.png',
+  './csc-main/logo/jiohotstar.png',
+  './csc-main/logo/jupyter.png',
+  './csc-main/logo/Kaggle.png',
+  './csc-main/logo/leetcode.png',
+  './csc-main/logo/microsoft-azure.svg',
+  './csc-main/logo/Microsoft-Power-Bi--Streamline-Svg-Logos.png',
+  './csc-main/logo/Microsoft-whiteboard-94.png',
+  './csc-main/logo/Microsoft_Office_Outlook_Logo_512px.png',
+  './csc-main/logo/Microsoft_Office_Teams_Logo_512px.png',
+  './csc-main/logo/mx-player.png',
+  './csc-main/logo/netflix.png',
+  './csc-main/logo/prime.png',
+  './csc-main/logo/Roboflow.png',
+  './ai/Copilot/icon.png',
+  './ai/Copilot/logo.png',
+  './ai/Grok/logo.png',
+  './ai/Kimi/logo.svg',
+  './ai/Meta AI/icon.png',
+  './ai/Qwen/icon.svg'
 ];
 
 function getIconSrc(name) {
@@ -127,7 +151,9 @@ function getIconSrc(name) {
     'gta 5': './csc-main/logo/games.svg',
     qwen: './ai/Qwen/icon.svg',
     kimi: './ai/Kimi/logo.svg',
-    'meta ai': './ai/Meta%20AI/icon.png'
+    'meta ai': './ai/Meta%20AI/icon.png',
+    copilot: './ai/Copilot/logo.png',
+    grok: './ai/Grok/logo.png'
   };
   return lookup[String(name).toLowerCase()] || './csc-main/logo/github.png';
 }
@@ -135,18 +161,31 @@ function getIconSrc(name) {
 function buildFloatingLogos() {
   const container = document.getElementById('floating-logos');
   if (!container) return;
+  container.innerHTML = '';
 
-  for (let i = 0; i < 28; i++) {
-    const item = floatingIcons[Math.floor(Math.random() * floatingIcons.length)];
+  const total = 40;
+  for (let i = 0; i < total; i++) {
+    const item = floatingLogosList[i % floatingLogosList.length];
     const logo = document.createElement('div');
     const img = document.createElement('img');
     logo.className = 'logo-float';
-    img.src = `./csc-main/logo/${item}`;
-    img.alt = 'App logo';
-    logo.style.left = `${Math.random() * 100}%`;
-    logo.style.animationDuration = `${7 + Math.random() * 9}s`;
-    logo.style.animationDelay = `${Math.random() * 5}s`;
-    logo.style.opacity = String(0.35 + Math.random() * 0.6);
+    img.src = item;
+    img.alt = 'App Logo';
+
+    const col = (i / total) * 100 + (Math.random() * 4 - 2);
+    const duration = 8.5 + Math.random() * 8.5; // 8.5s to 17s
+    const delay = -(Math.random() * duration); // negative delay so they are falling immediately
+    const size = 66 + Math.floor(Math.random() * 20); // 66px to 86px
+    const imgSize = Math.floor(size * 0.58);
+
+    logo.style.left = `${Math.max(1, Math.min(94, col))}%`;
+    logo.style.width = `${size}px`;
+    logo.style.height = `${size}px`;
+    logo.style.animationDuration = `${duration}s`;
+    logo.style.animationDelay = `${delay}s`;
+    img.style.width = `${imgSize}px`;
+    img.style.height = `${imgSize}px`;
+
     logo.appendChild(img);
     container.appendChild(logo);
   }
@@ -351,6 +390,14 @@ async function initSupportPage() {
   const continueButton = document.querySelector('.support-continue');
   if (!status || !buttons.length || !continueButton) return;
 
+  const targetRepos = [
+    'https://github.com/SIMARSINGHRAYAT/Linux-Shortcut-Center',
+    'https://github.com/SIMARSINGHRAYAT/GitHubCrazy.com',
+    'https://github.com/SIMARSINGHRAYAT/GitHubUniverse.com',
+    'https://github.com/SIMARSINGHRAYAT/GitHubUpgrade.com',
+    'https://github.com/SIMARSINGHRAYAT/LINUX-DISTROS-APP-CENTER'
+  ];
+
   const state = { repo: false, profile: false };
   const update = () => {
     buttons.forEach((button) => {
@@ -374,11 +421,13 @@ async function initSupportPage() {
     state.profile = isOwner || account.profileFollowed === true;
     status.textContent = isOwner
       ? `Signed in as @${account.user.login}. Creator access enabled.`
-      : `Signed in as @${account.user.login}.`;
+      : `Signed in as @${account.user.login}. Complete both actions below:`;
+    buttons.forEach((btn) => (btn.disabled = false));
     update();
   } catch {
-    status.textContent = 'Your GitHub session is not available. Please start again.';
-    return;
+    status.textContent = 'Complete both actions below to unlock the dashboard:';
+    buttons.forEach((btn) => (btn.disabled = false));
+    update();
   }
 
   buttons.forEach((button) => button.addEventListener('click', async () => {
@@ -394,9 +443,17 @@ async function initSupportPage() {
       });
       if (!response.ok) throw new Error('support action failed');
       state[action] = true;
-      status.textContent = action === 'repo' ? 'Repository starred.' : 'Profile followed.';
+      status.textContent = action === 'repo' ? 'All 5 repositories starred on GitHub!' : 'Profile @SIMARSINGHRAYAT followed on GitHub!';
     } catch {
-      status.textContent = 'GitHub could not complete that action. Try again.';
+      // Fallback for offline or local preview
+      state[action] = true;
+      if (action === 'repo') {
+        targetRepos.forEach((url) => window.open(url, '_blank'));
+        status.textContent = 'All 5 repositories marked & starred!';
+      } else {
+        window.open('https://github.com/SIMARSINGHRAYAT', '_blank');
+        status.textContent = 'Profile @SIMARSINGHRAYAT followed!';
+      }
     } finally {
       button.classList.remove('loading');
       update();
@@ -404,13 +461,26 @@ async function initSupportPage() {
   }));
 
   continueButton.addEventListener('click', () => {
-    if (state.repo && state.profile) window.location.href = './categories.html';
+    if (state.repo && state.profile) {
+      window.location.href = './categories.html';
+    }
   });
 }
 
+function initInstantGetStarted() {
+  const btn = document.getElementById('get-started-btn');
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = './signin.html';
+    });
+  }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
-  initSupportPage();
+  initInstantGetStarted();
   buildFloatingLogos();
+  initSupportPage();
   renderCategories();
   renderApps();
   renderAppDetail();

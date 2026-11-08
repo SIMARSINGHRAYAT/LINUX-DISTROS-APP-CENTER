@@ -1,4 +1,4 @@
-const { github, json, sessionToken, OWNER, REPOSITORY, PROFILE } = require('../../_github');
+const { github, json, sessionToken, OWNER, REPOSITORIES, PROFILE } = require('../../_github');
 
 module.exports = async (request, response) => {
   const token = sessionToken(request);
@@ -22,15 +22,18 @@ module.exports = async (request, response) => {
     });
     return;
   }
-  const [star, follow] = await Promise.all([
-    github(`/user/starred/${OWNER}/${REPOSITORY}`, { method: 'GET' }, token),
-    github(`/user/following/${PROFILE}`, { method: 'GET' }, token)
-  ]);
+  const repoChecks = await Promise.all(
+    REPOSITORIES.map((repo) => github(`/user/starred/${OWNER}/${repo}`, { method: 'GET' }, token))
+  );
+  const follow = await github(`/user/following/${PROFILE}`, { method: 'GET' }, token);
+  const allStarred = repoChecks.every((check) => check.response.status === 204);
+
   json(response, 200, {
     authenticated: true,
     user: { login: user.data.login, avatar: user.data.avatar_url },
-    repoStarred: isOwner || star.response.status === 204,
+    repoStarred: isOwner || allStarred,
     profileFollowed: isOwner || follow.response.status === 204,
-    isOwner
+    isOwner,
+    repositories: REPOSITORIES
   });
 };
