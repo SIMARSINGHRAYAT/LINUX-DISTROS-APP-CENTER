@@ -23,9 +23,15 @@ const SOCIAL_APP_BASE_URL = 'https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-AP
 
 function socialCommands(appDirectory) {
   const base = `${SOCIAL_APP_BASE_URL}/${appDirectory}`;
+  const installCommand = `curl -fsSL ${base}/install.sh | LINUX_DESKTOP_DISTRO=debian bash`;
+  const uninstallCommand = `curl -fsSL ${base}/uninstall.sh | bash`;
   return {
-    installCommand: `curl -fsSL ${base}/install.sh | bash`,
-    uninstallCommand: `curl -fsSL ${base}/uninstall.sh | bash`
+    commands: {
+      debianInstall: installCommand,
+      debianUninstall: uninstallCommand
+    },
+    installCommand,
+    uninstallCommand
   };
 }
 
@@ -133,11 +139,12 @@ const categories = [
     name: 'Social Media Apps',
     description: 'Persistent desktop launchers for popular social networks.',
     apps: [
-      { name: 'WhatsApp', slug: 'whatsapp', readme: './csc-main/Social-Media-Apps/WhatsApp/README.md', ...socialCommands('WhatsApp') },
-      { name: 'Telegram', slug: 'telegram', readme: './csc-main/Social-Media-Apps/Telegram/README.md', ...socialCommands('Telegram') },
-      { name: 'Instagram', slug: 'instagram', readme: './csc-main/Social-Media-Apps/Instagram/README.md', ...socialCommands('Instagram') },
-      { name: 'LinkedIn', slug: 'linkedin', readme: './csc-main/Social-Media-Apps/LinkedIn/README.md', ...socialCommands('LinkedIn') },
-      { name: 'Snapchat', slug: 'snapchat', readme: './csc-main/Social-Media-Apps/Snapchat/README.md', ...socialCommands('Snapchat') }
+      { name: 'WhatsApp', slug: 'whatsapp', icon: './social-app logo/whatsapp.png', readme: './csc-main/Social-Media-Apps/WhatsApp/README.md', ...socialCommands('WhatsApp') },
+      { name: 'Telegram', slug: 'telegram', icon: './social-app logo/telegram.png', readme: './csc-main/Social-Media-Apps/Telegram/README.md', ...socialCommands('Telegram') },
+      { name: 'Instagram', slug: 'instagram', icon: './social-app logo/instagram.png', readme: './csc-main/Social-Media-Apps/Instagram/README.md', ...socialCommands('Instagram') },
+      { name: 'LinkedIn', slug: 'linkedin', icon: './social-app logo/linkedin.png', readme: './csc-main/Social-Media-Apps/LinkedIn/README.md', ...socialCommands('LinkedIn') },
+      { name: 'Snapchat', slug: 'snapchat', icon: './social-app logo/snapchat.png', readme: './csc-main/Social-Media-Apps/Snapchat/README.md', ...socialCommands('Snapchat') },
+      { name: 'Facebook', slug: 'facebook', icon: './social-app logo/facebook.png', readme: './csc-main/Social-Media-Apps/Facebook/README.md', ...socialCommands('Facebook') }
     ]
   },
   {
@@ -215,6 +222,12 @@ function getIconSrc(name) {
     whiteboard: './csc-main/logo/Microsoft-whiteboard-94.png',
     outlook: './csc-main/logo/Microsoft_Office_Outlook_Logo_512px.png',
     roboflow: './csc-main/logo/Roboflow.png',
+    whatsapp: './social-app logo/whatsapp.png',
+    telegram: './social-app logo/telegram.png',
+    instagram: './social-app logo/instagram.png',
+    linkedin: './social-app logo/linkedin.png',
+    snapchat: './social-app logo/snapchat.png',
+    facebook: './social-app logo/facebook.png',
     codeforces: './csc-main/logo/codeforces.png',
     'gta 5': './csc-main/logo/games.svg',
     qwen: './ai/Qwen/icon.svg',
