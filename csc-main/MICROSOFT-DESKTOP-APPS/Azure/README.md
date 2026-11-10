@@ -30,6 +30,12 @@ curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/
 curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Azure/uninstall.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
 ```
 
+## Debian Uninstallation
+
+```bash
+curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Azure/uninstall.sh | LINUX_DESKTOP_DISTRO=debian bash
+```
+
 ## Kali Linux Uninstallation
 
 ```bash
