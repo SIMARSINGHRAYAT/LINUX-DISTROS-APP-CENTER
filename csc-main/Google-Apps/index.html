@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Apps</title>
+  <style>
+    :root { color-scheme: light; font: 16px system-ui, sans-serif; background: #f8fafd; color: #202124; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; }
+    header { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; background: #fff; border-bottom: 1px solid #dadce0; }
+    h1 { margin: 0; font-size: 1.45rem; font-weight: 500; }
+    .google { color: #4285f4; }
+    main { max-width: 1180px; margin: 0 auto; padding: 2rem; }
+    p { color: #5f6368; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    button { border: 1px solid #dadce0; border-radius: 12px; background: #fff; color: inherit; cursor: pointer; font: inherit; padding: 1.2rem; text-align: left; transition: box-shadow .15s, transform .15s; }
+    button:hover, button:focus-visible { box-shadow: 0 2px 10px #0002; transform: translateY(-2px); outline: none; }
+    .icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: .8rem; border-radius: 50%; background: #e8f0fe; color: #1a73e8; font-weight: 700; font-size: 1.2rem; }
+    strong { display: block; margin-bottom: .3rem; }
+    small { color: #5f6368; }
+  </style>
+</head>
+<body>
+  <header><h1><span class="google">Google</span> Apps</h1></header>
+  <main>
+    <h2>Choose a Google app</h2>
+    <p>Sign in once and use Google services in this window. Your session is kept securely for future launches.</p>
+    <section class="grid" aria-label="Google services">
+      <button data-url="https://mail.google.com/"><span class="icon">M</span><strong>Gmail</strong><small>Email and inbox</small></button>
+      <button data-url="https://www.youtube.com/"><span class="icon">▶</span><strong>YouTube</strong><small>Videos and channels</small></button>
+      <button data-url="https://photos.google.com/"><span class="icon">P</span><strong>Google Photos</strong><small>Photos and memories</small></button>
+      <button data-url="https://meet.google.com/"><span class="icon">M</span><strong>Google Meet</strong><small>Video meetings</small></button>
+      <button data-url="https://music.youtube.com/"><span class="icon">♪</span><strong>YouTube Music</strong><small>Music and playlists</small></button>
+      <button data-url="https://analytics.google.com/"><span class="icon">A</span><strong>Google Analytics</strong><small>Website analytics</small></button>
+      <button data-url="https://ads.google.com/"><span class="icon">$</span><strong>Google Ads</strong><small>Advertising campaigns</small></button>
+      <button data-url="https://maps.google.com/"><span class="icon">⌖</span><strong>Google Maps</strong><small>Places and navigation</small></button>
+      <button data-url="https://one.google.com/"><span class="icon">1</span><strong>Google One</strong><small>Storage and membership</small></button>
+      <button data-url="https://docs.google.com/"><span class="icon">D</span><strong>Docs</strong><small>Documents</small></button>
+      <button data-url="https://slides.google.com/"><span class="icon">S</span><strong>Slides</strong><small>Presentations</small></button>
+      <button data-url="https://sheets.google.com/"><span class="icon">S</span><strong>Sheets</strong><small>Spreadsheets</small></button>
+      <button data-url="https://calendar.google.com/"><span class="icon">C</span><strong>Calendar</strong><small>Schedule and events</small></button>
+      <button data-url="https://www.google.com/"><span class="icon">G</span><strong>Google Search</strong><small>Search the web</small></button>
+      <button data-url="https://gemini.google.com/"><span class="icon">✦</span><strong>Gemini</strong><small>Google AI assistant</small></button>
+    </section>
+  </main>
+  <script>
+    document.querySelectorAll('[data-url]').forEach((button) => {
+      button.addEventListener('click', () => window.googleApps.open(button.dataset.url));
+    });
+  </script>
+</body>
+</html>

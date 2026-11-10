@@ -234,7 +234,12 @@ mkdir -p "$ICON_DIR"
 if [ -n "$LOGO_FILE" ]; then
   LOGO_SOURCE=$REPOSITORY_DIR/csc-main/logo/$LOGO_FILE
   if [ -n "$LOCAL_SOURCE_DIR_OVERRIDE" ]; then
-    LOGO_SOURCE=$(CDPATH= cd -- "$LOCAL_SOURCE_DIR/../../.." && pwd)/csc-main/logo/$LOGO_FILE
+    LOCAL_REPOSITORY_ROOT=$(git -C "$LOCAL_SOURCE_DIR" rev-parse --show-toplevel 2>/dev/null || true)
+    if [ -n "$LOCAL_REPOSITORY_ROOT" ]; then
+      LOGO_SOURCE=$LOCAL_REPOSITORY_ROOT/csc-main/logo/$LOGO_FILE
+    else
+      LOGO_SOURCE=$(CDPATH= cd -- "$LOCAL_SOURCE_DIR/../../.." && pwd)/csc-main/logo/$LOGO_FILE
+    fi
   fi
   if [ ! -f "$LOGO_SOURCE" ]; then
     printf '%s\n' "Provided logo not found: $LOGO_SOURCE" >&2

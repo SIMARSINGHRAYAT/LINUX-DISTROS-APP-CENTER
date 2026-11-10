@@ -148,6 +148,14 @@ const categories = [
     ]
   },
   {
+    id: 'google-apps',
+    name: 'Google Apps',
+    description: 'Official Google productivity apps in one desktop hub.',
+    apps: [
+      { name: 'Google Apps', slug: 'google-apps', icon: './csc-main/logo/google-colab.png', readme: './csc-main/Google-Apps/README.md', commands: { debianInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Google-Apps/install.sh | LINUX_DESKTOP_DISTRO=debian bash', debianUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Google-Apps/uninstall.sh | LINUX_DESKTOP_DISTRO=debian bash' } }
+    ]
+  },
+  {
     id: 'games',
     name: 'Games',
     description: 'Games you can launch from the Linux desktop.',
