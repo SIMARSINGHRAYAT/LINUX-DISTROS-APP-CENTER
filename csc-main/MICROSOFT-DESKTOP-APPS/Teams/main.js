@@ -6,6 +6,7 @@ const path = require('node:path');
 
 const APP_URL = 'https://teams.microsoft.com/';
 const PARTITION = 'persist:microsoft-teams';
+const BROWSER_USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36';
 const APP_HOSTS = new Set(['teams.microsoft.com', 'teams.cloud.microsoft', 'teams.live.com']);
 const MICROSOFT_HOSTS = new Set([
   'microsoft.com', 'microsoftonline.com', 'office.com', 'office365.com', 'live.com',
@@ -65,6 +66,7 @@ function configureSession(appSession) {
 
 function applyNavigationPolicy(window) {
   const contents = window.webContents;
+  contents.setUserAgent(BROWSER_USER_AGENT);
   contents.setWindowOpenHandler(({ url }) => {
     if (!isTrustedMicrosoftUrl(url)) { openExternal(url); return { action: 'deny' }; }
     return { action: 'allow', overrideBrowserWindowOptions: {

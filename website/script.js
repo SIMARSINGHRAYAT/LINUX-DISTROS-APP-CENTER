@@ -1,3 +1,34 @@
+const MICROSOFT_APP_BASE_URL = 'https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS';
+
+function microsoftCommands(appDirectory) {
+  const install = (distro) => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/${appDirectory}/install.sh | LINUX_DESKTOP_DISTRO=${distro} bash`;
+  const uninstall = () => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/${appDirectory}/uninstall.sh | bash`;
+  return {
+    ubuntuInstall: install('ubuntu'),
+    ubuntuUninstall: uninstall(),
+    debianInstall: install('debian'),
+    debianUninstall: uninstall(),
+    mintInstall: install('mint'),
+    mintUninstall: uninstall(),
+    fedoraInstall: install('fedora'),
+    fedoraUninstall: uninstall(),
+    archInstall: install('arch'),
+    archUninstall: uninstall(),
+    kaliInstall: install('kali'),
+    kaliUninstall: uninstall()
+  };
+}
+
+const SOCIAL_APP_BASE_URL = 'https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Social-Media-Apps';
+
+function socialCommands(appDirectory) {
+  const base = `${SOCIAL_APP_BASE_URL}/${appDirectory}`;
+  return {
+    installCommand: `curl -fsSL ${base}/install.sh | bash`,
+    uninstallCommand: `curl -fsSL ${base}/uninstall.sh | bash`
+  };
+}
+
 const categories = [
   {
     id: 'top-ai-dev-apps',
@@ -33,7 +64,13 @@ const categories = [
     name: 'Microsoft Apps',
     description: 'Official productivity apps for Linux desktop workflows.',
     apps: [
-      { name: 'Microsoft Teams', slug: 'teams', icon: './csc-main/logo/Microsoft_Office_Teams_Logo_512px.png', readme: './csc-main/MICROSOFT-DESKTOP-APPS/Teams/README.md', installCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Teams/install.sh | bash', uninstallCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Teams/uninstall.sh | bash' },
+      {
+        name: 'Microsoft Teams',
+        slug: 'teams',
+        icon: './csc-main/logo/Microsoft_Office_Teams_Logo_512px.png',
+        readme: './csc-main/MICROSOFT-DESKTOP-APPS/Teams/README.md',
+        commands: microsoftCommands('Teams')
+      },
       {
         name: 'Power BI',
         slug: 'powerbi',
@@ -54,9 +91,28 @@ const categories = [
           kaliUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=kali bash'
         }
       },
-      { name: 'Whiteboard', slug: 'whiteboard', icon: './csc-main/logo/Microsoft-whiteboard-94.png', readme: './csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/README.md', installCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/install.sh | bash', uninstallCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/uninstall.sh | bash' },
-      { name: 'Outlook', slug: 'outlook', icon: './csc-main/logo/Microsoft_Office_Outlook_Logo_512px.png', readme: './csc-main/MICROSOFT-DESKTOP-APPS/Outlook/README.md', installCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Outlook/install.sh | bash', uninstallCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Outlook/uninstall.sh | bash' },
-      { name: 'Microsoft Azure', slug: 'azure', icon: './csc-main/logo/microsoft-azure.svg', readme: './csc-main/MICROSOFT-DESKTOP-APPS/Azure/README.md', url: 'https://portal.azure.com', commands: { ubuntuInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Azure/install.sh | LINUX_DESKTOP_DISTRO=ubuntu bash', ubuntuUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Azure/uninstall.sh | LINUX_DESKTOP_DISTRO=ubuntu bash', kaliInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Azure/install.sh | LINUX_DESKTOP_DISTRO=kali bash', kaliUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Azure/uninstall.sh | LINUX_DESKTOP_DISTRO=kali bash' } }
+      {
+        name: 'Whiteboard',
+        slug: 'whiteboard',
+        icon: './csc-main/logo/Microsoft-whiteboard-94.png',
+        readme: './csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/README.md',
+        commands: microsoftCommands('Whiteboard')
+      },
+      {
+        name: 'Outlook',
+        slug: 'outlook',
+        icon: './csc-main/logo/Microsoft_Office_Outlook_Logo_512px.png',
+        readme: './csc-main/MICROSOFT-DESKTOP-APPS/Outlook/README.md',
+        commands: microsoftCommands('Outlook')
+      },
+      {
+        name: 'Microsoft Azure',
+        slug: 'azure',
+        icon: './csc-main/logo/microsoft-azure.svg',
+        readme: './csc-main/MICROSOFT-DESKTOP-APPS/Azure/README.md',
+        url: 'https://portal.azure.com',
+        commands: microsoftCommands('Azure')
+      }
     ]
   },
   {
@@ -70,6 +126,18 @@ const categories = [
       { name: 'Apple TV', slug: 'appletv', icon: './csc-main/logo/apple-tv.png', readme: './csc-main/Streaming-Apps/AppleTV/README.md', installCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Streaming-Apps/AppleTV/install.sh | bash', uninstallCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Streaming-Apps/AppleTV/uninstall.sh | bash' },
       { name: 'Crunchyroll', slug: 'crunchyroll', icon: './csc-main/logo/Crunchyroll.png', readme: './csc-main/Streaming-Apps/Crunchyroll/README.md', installCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Streaming-Apps/Crunchyroll/install.sh | bash', uninstallCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Streaming-Apps/Crunchyroll/uninstall.sh | bash' },
       { name: 'MX Player', slug: 'mxplayer', icon: './csc-main/logo/mx-player.png', readme: './csc-main/Streaming-Apps/MXPlayer/README.md', installCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Streaming-Apps/MXPlayer/install.sh | bash', uninstallCommand: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Streaming-Apps/MXPlayer/uninstall.sh | bash' }
+    ]
+  },
+  {
+    id: 'social-media-apps',
+    name: 'Social Media Apps',
+    description: 'Persistent desktop launchers for popular social networks.',
+    apps: [
+      { name: 'WhatsApp', slug: 'whatsapp', readme: './csc-main/Social-Media-Apps/WhatsApp/README.md', ...socialCommands('WhatsApp') },
+      { name: 'Telegram', slug: 'telegram', readme: './csc-main/Social-Media-Apps/Telegram/README.md', ...socialCommands('Telegram') },
+      { name: 'Instagram', slug: 'instagram', readme: './csc-main/Social-Media-Apps/Instagram/README.md', ...socialCommands('Instagram') },
+      { name: 'LinkedIn', slug: 'linkedin', readme: './csc-main/Social-Media-Apps/LinkedIn/README.md', ...socialCommands('LinkedIn') },
+      { name: 'Snapchat', slug: 'snapchat', readme: './csc-main/Social-Media-Apps/Snapchat/README.md', ...socialCommands('Snapchat') }
     ]
   },
   {
