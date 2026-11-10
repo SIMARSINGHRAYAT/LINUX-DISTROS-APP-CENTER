@@ -2,6 +2,11 @@
   "name": "google-apps-desktop",
   "version": "1.0.0",
   "description": "Unofficial Google Apps desktop hub for Linux.",
+  "homepage": "https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS",
+  "author": {
+    "name": "Linux Desktop Apps contributors",
+    "email": "maintainers@example.com"
+  },
   "main": "src/main.js",
   "license": "MIT",
   "private": true,
