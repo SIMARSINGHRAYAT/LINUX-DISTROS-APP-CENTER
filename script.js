@@ -19,6 +19,38 @@ function microsoftCommands(appDirectory) {
   };
 }
 
+function microsoftPowerBiCommands() {
+  const command = (distro, action) => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/PowerBI/${action}.sh | LINUX_DESKTOP_DISTRO=${distro} bash`;
+  return Object.fromEntries(
+    ['ubuntu', 'debian', 'mint', 'fedora', 'arch', 'kali'].flatMap((distro) => [
+      [`${distro}Install`, command(distro, 'install')],
+      [`${distro}Uninstall`, command(distro, 'uninstall')]
+    ])
+  );
+}
+
+const microsoftAppCommands = {
+  teams: microsoftCommands('Teams'),
+  powerbi: microsoftPowerBiCommands(),
+  whiteboard: microsoftCommands('Whiteboard'),
+  outlook: microsoftCommands('Outlook'),
+  azure: microsoftCommands('Azure')
+};
+
+function microsoftBundleCommands() {
+  const apps = Object.values(microsoftAppCommands);
+  const buildCommand = (distro, action) => apps
+    .map((commands) => commands[`${distro}${action[0].toUpperCase()}${action.slice(1)}`])
+    .join(' && ');
+
+  return Object.fromEntries(
+    ['ubuntu', 'debian', 'mint', 'fedora', 'arch', 'kali'].flatMap((distro) => [
+      [`${distro}Install`, buildCommand(distro, 'install')],
+      [`${distro}Uninstall`, buildCommand(distro, 'uninstall')]
+    ])
+  );
+}
+
 const SOCIAL_APP_BASE_URL = 'https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Social-Media-Apps';
 
 function socialCommands(appDirectory) {
@@ -75,41 +107,28 @@ const categories = [
         slug: 'teams',
         icon: './csc-main/logo/Microsoft_Office_Teams_Logo_512px.png',
         readme: './csc-main/MICROSOFT-DESKTOP-APPS/Teams/README.md',
-        commands: microsoftCommands('Teams')
+        commands: microsoftAppCommands.teams
       },
       {
         name: 'Power BI',
         slug: 'powerbi',
         icon: './csc-main/logo/Microsoft-Power-Bi--Streamline-Svg-Logos.png',
         readme: './csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/README.md',
-        commands: {
-          ubuntuInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=ubuntu bash',
-          ubuntuUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=ubuntu bash',
-          debianInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=debian bash',
-          debianUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=debian bash',
-          mintInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=mint bash',
-          mintUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=mint bash',
-          fedoraInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=fedora bash',
-          fedoraUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=fedora bash',
-          archInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=arch bash',
-          archUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=arch bash',
-          kaliInstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=kali bash',
-          kaliUninstall: 'curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=kali bash'
-        }
+        commands: microsoftAppCommands.powerbi
       },
       {
         name: 'Whiteboard',
         slug: 'whiteboard',
         icon: './csc-main/logo/Microsoft-whiteboard-94.png',
         readme: './csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/README.md',
-        commands: microsoftCommands('Whiteboard')
+        commands: microsoftAppCommands.whiteboard
       },
       {
         name: 'Outlook',
         slug: 'outlook',
         icon: './csc-main/logo/Microsoft_Office_Outlook_Logo_512px.png',
         readme: './csc-main/MICROSOFT-DESKTOP-APPS/Outlook/README.md',
-        commands: microsoftCommands('Outlook')
+        commands: microsoftAppCommands.outlook
       },
       {
         name: 'Microsoft Azure',
@@ -117,7 +136,14 @@ const categories = [
         icon: './csc-main/logo/microsoft-azure.svg',
         readme: './csc-main/MICROSOFT-DESKTOP-APPS/Azure/README.md',
         url: 'https://portal.azure.com',
-        commands: microsoftCommands('Azure')
+        commands: microsoftAppCommands.azure
+      },
+      {
+        name: 'Install all',
+        slug: 'microsoft-all',
+        icon: './csc-main/logo/microsoft-azure.svg',
+        description: 'Install or remove all five Microsoft desktop apps with one command.',
+        commands: microsoftBundleCommands()
       }
     ]
   },
@@ -331,16 +357,6 @@ function renderApps() {
   `).join('');
 }
 
-async function fetchReadme(url) {
-  try {
-    const response = await fetch(url, { cache: 'no-store' });
-    if (!response.ok) throw new Error('Readme unavailable');
-    return await response.text();
-  } catch (error) {
-    return null;
-  }
-}
-
 function copyText(text) {
   return navigator.clipboard.writeText(text);
 }
@@ -354,7 +370,7 @@ const distroDefinitions = [
   { key: 'kali', name: 'Kali Linux', installKey: 'kaliInstall', uninstallKey: 'kaliUninstall' }
 ];
 
-function buildReadmeBlocks(app, markdown) {
+function buildReadmeBlocks(app) {
   const installCommand = app.installCommand || 'Install command not found.';
   const uninstallCommand = app.uninstallCommand || 'Uninstall command not found.';
 
@@ -367,8 +383,6 @@ function buildReadmeBlocks(app, markdown) {
       <pre id="${id}">${escapeHtml(content || 'No command available for this section.')}</pre>
     </div>
   `;
-
-  if (!markdown) return '<p>README content is unavailable for this app.</p>';
 
   if (app.commands) {
     const commands = app.commands;
@@ -412,7 +426,7 @@ function escapeHtml(value) {
     .replace(/'/g, '&#039;');
 }
 
-async function renderAppDetail() {
+function renderAppDetail() {
   const detail = document.getElementById('app-detail');
   if (!detail) return;
 
@@ -421,8 +435,6 @@ async function renderAppDetail() {
   const categoryId = params.get('category');
   const category = categories.find((item) => item.id === categoryId) || categories[0];
   const app = category.apps.find((item) => item.slug === appSlug) || category.apps[0];
-
-  const markdown = app.readme ? await fetchReadme(app.readme) : null;
 
   detail.innerHTML = `
     <article class="app-detail-card">
@@ -447,7 +459,7 @@ async function renderAppDetail() {
       </div>
 
       <div class="copy-group">
-        ${markdown ? buildReadmeBlocks(app, markdown) : '<p>README content is unavailable for this app.</p>'}
+        ${buildReadmeBlocks(app)}
       </div>
     </article>
   `;
