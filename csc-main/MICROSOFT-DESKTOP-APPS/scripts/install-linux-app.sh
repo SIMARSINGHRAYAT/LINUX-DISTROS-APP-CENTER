@@ -74,6 +74,32 @@ case "$RAW_DISTRO" in
       printf '%s\n' "Unsupported Linux distribution: $RAW_DISTRO. Supported distributions: Ubuntu, Debian, Linux Mint, Fedora, Arch Linux, Kali Linux." >&2
       exit 1
     fi
+
+    is_app_installed() {
+      case "$PKG_TYPE" in
+        deb)
+          dpkg-query -W -f='${Status}' "$DEB_PACKAGE" 2>/dev/null | grep -q 'install ok installed'
+          ;;
+        rpm)
+          command -v rpm >/dev/null 2>&1 && rpm -q "$DEB_PACKAGE" >/dev/null 2>&1
+          ;;
+        pacman)
+          command -v pacman >/dev/null 2>&1 && pacman -Q "$DEB_PACKAGE" >/dev/null 2>&1
+          ;;
+        appimage)
+          [ -x "${XDG_BIN_HOME:-$HOME/.local/bin}/$DEB_PACKAGE" ] &&
+            [ -x "${XDG_DATA_HOME:-$HOME/.local/share}/linux-desktop-apps/$DEB_PACKAGE/$DEB_PACKAGE.AppImage" ]
+          ;;
+        *)
+          return 1
+          ;;
+      esac
+    }
+
+    if is_app_installed; then
+      printf '%s\n' "$DISPLAY_NAME is already installed. Skipping rebuild."
+      exit 0
+    fi
     ;;
 esac
 

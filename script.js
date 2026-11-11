@@ -578,8 +578,21 @@ function initInstantGetStarted() {
   }
 }
 
+function initSignIn() {
+  const button = document.querySelector('.github-signin-btn');
+  if (!button) return;
+
+  button.addEventListener('click', () => {
+    button.setAttribute('aria-busy', 'true');
+    button.classList.add('loading');
+    const label = button.querySelector('.github-signin-label');
+    if (label) label.textContent = 'Connecting to GitHub...';
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   initInstantGetStarted();
+  initSignIn();
   buildFloatingLogos();
   initSupportPage();
   renderCategories();
