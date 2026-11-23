@@ -8,3 +8,8 @@ These Debian launchers use Chromium or Google Chrome app mode with an isolated, 
 - [LinkedIn](LinkedIn/README.md)
 - [Snapchat](Snapchat/README.md)
 - [Facebook](Facebook/README.md)
+- [Pinterest](Pinterest/README.md)
+- [Twitter (X)](Twitter-X/README.md)
+- [Discord](Discord/README.md)
+- [Threads](Threads/README.md)
+- [Twitch](Twitch/README.md)

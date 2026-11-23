@@ -141,7 +141,12 @@ const categories = [
     apps: [
       { name: 'WhatsApp', slug: 'whatsapp', icon: './social-app logo/whatsapp.png', readme: './csc-main/Social-Media-Apps/WhatsApp/README.md', ...socialCommands('WhatsApp') },
       { name: 'Telegram', slug: 'telegram', icon: './social-app logo/telegram.png', readme: './csc-main/Social-Media-Apps/Telegram/README.md', ...socialCommands('Telegram') },
+      { name: 'Pinterest', slug: 'pinterest', icon: './social-app logo/pinterest.png', readme: './csc-main/Social-Media-Apps/Pinterest/README.md', ...socialCommands('Pinterest') },
+      { name: 'Twitter (X)', slug: 'twitter-x', icon: './social-app logo/twitter-x.png', readme: './csc-main/Social-Media-Apps/Twitter-X/README.md', ...socialCommands('Twitter-X') },
+      { name: 'Discord', slug: 'discord', icon: './social-app logo/discord.png', readme: './csc-main/Social-Media-Apps/Discord/README.md', ...socialCommands('Discord') },
+      { name: 'Threads', slug: 'threads', icon: './social-app logo/threads.png', readme: './csc-main/Social-Media-Apps/Threads/README.md', ...socialCommands('Threads') },
       { name: 'Instagram', slug: 'instagram', icon: './social-app logo/instagram.png', readme: './csc-main/Social-Media-Apps/Instagram/README.md', ...socialCommands('Instagram') },
+      { name: 'Twitch', slug: 'twitch', icon: './social-app logo/twitch.png', readme: './csc-main/Social-Media-Apps/Twitch/README.md', ...socialCommands('Twitch') },
       { name: 'LinkedIn', slug: 'linkedin', icon: './social-app logo/linkedin.png', readme: './csc-main/Social-Media-Apps/LinkedIn/README.md', ...socialCommands('LinkedIn') },
       { name: 'Snapchat', slug: 'snapchat', icon: './social-app logo/snapchat.png', readme: './csc-main/Social-Media-Apps/Snapchat/README.md', ...socialCommands('Snapchat') },
       { name: 'Facebook', slug: 'facebook', icon: './social-app logo/facebook.png', readme: './csc-main/Social-Media-Apps/Facebook/README.md', ...socialCommands('Facebook') }
