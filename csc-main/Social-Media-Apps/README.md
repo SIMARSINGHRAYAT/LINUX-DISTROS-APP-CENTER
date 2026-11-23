@@ -12,4 +12,4 @@ These Debian launchers use Chromium or Google Chrome app mode with an isolated, 
 - [Twitter (X)](Twitter-X/README.md)
 - [Discord](Discord/README.md)
 - [Threads](Threads/README.md)
-- [Twitch](Twitch/README.md)
+- [WeChat](WeChat/README.md)
