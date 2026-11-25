@@ -1,6 +1,6 @@
 # Microsoft Whiteboard Desktop
 
-The Debian package opens the official Whiteboard service and keeps its Microsoft sign-in session between launches. Uninstalling it removes its local session and settings, but does not delete downloaded files or data in your Microsoft account.
+The Debian and Ubuntu packages open the official Whiteboard service and keep their Microsoft sign-in session between launches. Uninstalling removes the local session and settings, but does not delete downloaded files or data in your Microsoft account.
 
 ## Debian installation
 
@@ -12,4 +12,11 @@ curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/
 
 ```bash
 curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/uninstall.sh | LINUX_DESKTOP_DISTRO=debian bash
+```
+
+## Ubuntu installation and uninstallation
+
+```bash
+curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/install.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
+curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/uninstall.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
 ```

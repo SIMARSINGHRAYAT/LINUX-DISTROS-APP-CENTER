@@ -1,10 +1,12 @@
 const MICROSOFT_APP_BASE_URL = 'https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS';
 
 function microsoftCommands(appDirectory) {
-  const command = (action) => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/${appDirectory}/${action}.sh | LINUX_DESKTOP_DISTRO=debian bash`;
+  const command = (action, distro) => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/${appDirectory}/${action}.sh | LINUX_DESKTOP_DISTRO=${distro} bash`;
   return {
-    debianInstall: command('install'),
-    debianUninstall: command('uninstall')
+    ubuntuInstall: command('install', 'ubuntu'),
+    ubuntuUninstall: command('uninstall', 'ubuntu'),
+    debianInstall: command('install', 'debian'),
+    debianUninstall: command('uninstall', 'debian')
   };
 }
 
@@ -21,13 +23,15 @@ const microsoftAppCommands = {
 
 function microsoftBundleCommands() {
   const apps = Object.values(microsoftAppCommands);
-  const buildCommand = (action) => apps
-    .map((commands) => commands[`debian${action[0].toUpperCase()}${action.slice(1)}`])
+  const buildCommand = (action, distro) => apps
+    .map((commands) => commands[`${distro}${action[0].toUpperCase()}${action.slice(1)}`])
     .join(' && ');
 
   return {
-    debianInstall: buildCommand('install'),
-    debianUninstall: buildCommand('uninstall')
+    ubuntuInstall: buildCommand('install', 'ubuntu'),
+    ubuntuUninstall: buildCommand('uninstall', 'ubuntu'),
+    debianInstall: buildCommand('install', 'debian'),
+    debianUninstall: buildCommand('uninstall', 'debian')
   };
 }
 
@@ -153,7 +157,7 @@ const categories = [
         name: 'Install all',
         slug: 'microsoft-all',
         icon: './csc-main/logo/microsoft-azure.svg',
-        description: 'Install or remove all eight Microsoft desktop apps on Debian with one command.',
+        description: 'Install or remove all eight Microsoft desktop apps on Ubuntu or Debian with one command.',
         commands: microsoftBundleCommands()
       }
     ]
