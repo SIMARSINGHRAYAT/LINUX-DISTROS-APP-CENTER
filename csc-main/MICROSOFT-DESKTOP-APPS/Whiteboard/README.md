@@ -1,6 +1,6 @@
 # Microsoft Whiteboard Desktop
 
-The Debian package opens the official Whiteboard service and keeps its Microsoft sign-in session between launches.
+The Debian package opens the official Whiteboard service and keeps its Microsoft sign-in session between launches. Uninstalling it removes its local session and settings, but does not delete downloaded files or data in your Microsoft account.
 
 ## Debian installation
 

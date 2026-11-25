@@ -23,6 +23,7 @@
   "build": {
     "appId": "com.microsoft.desktop.azure",
     "productName": "Microsoft Azure",
+    "deb": { "packageName": "microsoft-azure" },
     "asar": true,
     "directories": { "output": "dist" },
     "files": ["main.js", "preload.js", "offline.html", "assets/**/*", "package.json"],

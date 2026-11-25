@@ -22,6 +22,7 @@
   "build": {
     "appId": "com.microsoft.desktop.teams",
     "productName": "Microsoft Teams",
+    "deb": { "packageName": "microsoft-teams" },
     "asar": true,
     "directories": { "output": "dist" },
     "files": ["main.js", "preload.js", "offline.html", "assets/**/*", "package.json"],

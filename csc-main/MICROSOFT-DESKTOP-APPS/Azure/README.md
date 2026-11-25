@@ -1,6 +1,6 @@
 # Microsoft Azure
 
-Access Microsoft Azure through the official [Azure portal](https://portal.azure.com). The Debian desktop package keeps its Microsoft sign-in session between launches.
+Access Microsoft Azure through the official [Azure portal](https://portal.azure.com). The Debian desktop package keeps its Microsoft sign-in session between launches. Uninstalling it removes its local session and settings, but does not delete downloaded files or data in your Microsoft account.
 
 ## Debian installation
 

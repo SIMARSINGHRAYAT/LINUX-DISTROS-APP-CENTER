@@ -19,6 +19,7 @@
   "build": {
     "appId": "com.microsoft.desktop.onedrive",
     "productName": "Microsoft OneDrive",
+    "deb": { "packageName": "microsoft-onedrive" },
     "asar": true,
     "directories": { "output": "dist" },
     "files": ["main.js", "preload.js", "offline.html", "assets/**/*", "package.json"],

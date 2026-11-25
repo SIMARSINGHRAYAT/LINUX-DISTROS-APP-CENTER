@@ -400,7 +400,7 @@ function buildReadmeBlocks(app) {
     <div class="code-block">
       <header>
         <h3>${label}</h3>
-        <button class="copy-btn" data-copy="${id}">Copy</button>
+        <button class="copy-btn" aria-label="Copy ${label} command" data-copy="${id}">Copy command</button>
       </header>
       <pre id="${id}">${escapeHtml(content || 'No command available for this section.')}</pre>
     </div>
@@ -486,6 +486,7 @@ function renderAppDetail() {
         <div class="detail-intro">
           <p class="eyebrow">Installation commands</p>
           <h2>${escapeHtml(app.name)} installation commands</h2>
+          <p>Copy a command, paste it into your system terminal, and press Enter. Websites cannot run commands directly on your computer.</p>
         </div>
         <div class="copy-group">
           ${buildReadmeBlocks(app)}
@@ -499,10 +500,27 @@ function renderAppDetail() {
       const target = button.getAttribute('data-copy');
       const source = document.getElementById(target);
       if (!source) return;
-      await copyText(source.textContent);
       const original = button.textContent;
+      const originalLabel = button.getAttribute('aria-label');
+      try {
+        await copyText(source.textContent);
+      } catch {
+        button.textContent = 'Copy failed';
+        button.setAttribute('aria-label', 'Copy failed. Select and copy the command manually.');
+        button.title = 'Select and copy the command manually.';
+        setTimeout(() => {
+          button.textContent = original;
+          if (originalLabel) button.setAttribute('aria-label', originalLabel);
+          button.removeAttribute('title');
+        }, 2500);
+        return;
+      }
       button.textContent = 'Copied';
-      setTimeout(() => { button.textContent = original; }, 1200);
+      button.setAttribute('aria-label', 'Command copied');
+      setTimeout(() => {
+        button.textContent = original;
+        if (originalLabel) button.setAttribute('aria-label', originalLabel);
+      }, 1200);
     });
   });
 

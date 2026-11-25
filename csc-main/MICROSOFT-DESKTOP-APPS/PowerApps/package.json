@@ -19,6 +19,7 @@
   "build": {
     "appId": "com.microsoft.desktop.powerapps",
     "productName": "Microsoft Power Apps",
+    "deb": { "packageName": "microsoft-powerapps" },
     "asar": true,
     "directories": { "output": "dist" },
     "files": ["main.js", "preload.js", "offline.html", "assets/**/*", "package.json"],

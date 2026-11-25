@@ -9,6 +9,6 @@
   "private": true,
   "scripts": { "start": "electron .", "dev": "electron . --enable-logging", "validate": "node --check main.js && node --check preload.js", "build": "electron-builder --linux deb", "build:linux": "electron-builder --linux deb", "build:deb": "electron-builder --linux deb", "package": "npm run build:deb" },
   "devDependencies": { "electron": "43.3.0", "electron-builder": "26.0.12" },
-  "build": { "appId": "com.microsoft.desktop.powerbi", "productName": "Microsoft Power BI", "asar": true, "directories": { "output": "dist" }, "files": ["main.js", "preload.js", "offline.html", "assets/**/*", "package.json"], "linux": { "target": ["deb"], "category": "Office;DataVisualization;", "icon": "assets/icons", "synopsis": "Microsoft Power BI desktop wrapper", "artifactName": "Microsoft-PowerBI-${version}-${arch}.${ext}" } },
+  "build": { "appId": "com.microsoft.desktop.powerbi", "productName": "Microsoft Power BI", "deb": { "packageName": "microsoft-powerbi" }, "asar": true, "directories": { "output": "dist" }, "files": ["main.js", "preload.js", "offline.html", "assets/**/*", "package.json"], "linux": { "target": ["deb"], "category": "Office;DataVisualization;", "icon": "assets/icons", "synopsis": "Microsoft Power BI desktop wrapper", "artifactName": "Microsoft-PowerBI-${version}-${arch}.${ext}" } },
   "engines": { "node": ">=22.12.0" }
 }
