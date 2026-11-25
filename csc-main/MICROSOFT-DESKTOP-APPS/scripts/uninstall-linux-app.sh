@@ -21,6 +21,9 @@ if [ "$#" -eq 4 ]; then
         ;;
     esac
   done
+  PRODUCT_PACKAGE_NAME=$(printf '%s' "$PRODUCT_NAME" |
+    tr '[:upper:]' '[:lower:]' |
+    sed 's/[^a-z0-9][^a-z0-9]*/-/g; s/^-//; s/-$//')
 fi
 
 if [ -r /etc/os-release ]; then
@@ -78,13 +81,59 @@ elif ! command -v apt-get >/dev/null 2>&1 || ! command -v dpkg-query >/dev/null 
   exit 1
 fi
 
+stop_package_processes() {
+  PACKAGE_FILES=$($SUDO dpkg-query -L "$1")
+  PACKAGE_EXECUTABLES=$(
+    printf '%s\n' "$PACKAGE_FILES" |
+      while IFS= read -r PACKAGE_FILE; do
+        if [ -f "$PACKAGE_FILE" ] && [ -x "$PACKAGE_FILE" ]; then
+          readlink -f "$PACKAGE_FILE" 2>/dev/null || {
+            printf 'Could not resolve installed executable: %s\n' "$PACKAGE_FILE" >&2
+            exit 1
+          }
+        fi
+      done
+  )
+
+  [ -n "$PACKAGE_EXECUTABLES" ] || return 0
+  for PROCESS_DIR in /proc/[0-9]*; do
+    [ -e "$PROCESS_DIR/exe" ] || continue
+    PROCESS_EXE=$(readlink -f "$PROCESS_DIR/exe" 2>/dev/null || true)
+    if [ -n "$PROCESS_EXE" ] &&
+      printf '%s\n' "$PACKAGE_EXECUTABLES" | grep -Fqx -- "$PROCESS_EXE"; then
+      PROCESS_PID=${PROCESS_DIR#/proc/}
+      PROCESS_UID=$(ps -o uid= -p "$PROCESS_PID" 2>/dev/null |
+        sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
+      [ "$PROCESS_UID" = "$(id -u)" ] || continue
+      if ! kill -TERM "$PROCESS_PID" 2>/dev/null; then
+        [ -e "$PROCESS_DIR/exe" ] || continue
+        printf 'Could not stop %s process %s.\n' "$DISPLAY_NAME" "$PROCESS_PID" >&2
+        return 1
+      fi
+      for WAIT in 1 2 3 4 5; do
+        [ -e "$PROCESS_DIR/exe" ] || break
+        sleep 1
+      done
+      if [ -e "$PROCESS_DIR/exe" ]; then
+        if ! kill -KILL "$PROCESS_PID" 2>/dev/null && [ -e "$PROCESS_DIR/exe" ]; then
+          printf 'Could not force-stop %s process %s.\n' "$DISPLAY_NAME" "$PROCESS_PID" >&2
+          return 1
+        fi
+      fi
+    fi
+  done
+}
+
 case "$DISTRO" in
   deb)
     if [ "$CLEAN_APP_DATA" -eq 1 ]; then
-      PACKAGE_STATUS=$($SUDO dpkg-query -W -f='${db:Status-Status}' "$DEB_PACKAGE" 2>/dev/null || true)
-      if [ -n "$PACKAGE_STATUS" ] && [ "$PACKAGE_STATUS" != not-installed ]; then
-        $SUDO apt-get purge -y "$DEB_PACKAGE"
-      fi
+      for PACKAGE_CANDIDATE in "$DEB_PACKAGE" "$APP_PACKAGE_NAME" "$PRODUCT_PACKAGE_NAME"; do
+        PACKAGE_STATUS=$($SUDO dpkg-query -W -f='${db:Status-Status}' "$PACKAGE_CANDIDATE" 2>/dev/null || true)
+        if [ -n "$PACKAGE_STATUS" ] && [ "$PACKAGE_STATUS" != not-installed ]; then
+          stop_package_processes "$PACKAGE_CANDIDATE"
+          $SUDO apt-get purge -y "$PACKAGE_CANDIDATE"
+        fi
+      done
     elif [ -n "$SUDO" ] || [ "$(id -u)" -eq 0 ]; then
       $SUDO apt-get remove -y "$DEB_PACKAGE" 2>/dev/null || true
     fi
@@ -112,14 +161,15 @@ if [ "$CLEAN_APP_DATA" -eq 1 ]; then
   CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
   DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
   STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
-  for APP_DATA_NAME in "$PRODUCT_NAME" "$APP_PACKAGE_NAME" "$DEB_PACKAGE"; do
+  BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}
+  for APP_DATA_NAME in "$PRODUCT_NAME" "$APP_PACKAGE_NAME" "$DEB_PACKAGE" "$PRODUCT_PACKAGE_NAME"; do
     for APP_DATA_ROOT in "$CONFIG_HOME" "$CACHE_HOME" "$DATA_HOME" "$STATE_HOME"; do
       rm -rf "$APP_DATA_ROOT/$APP_DATA_NAME"
     done
+    rm -f "$DATA_HOME/applications/$APP_DATA_NAME.desktop"
+    rm -f "$BIN_HOME/$APP_DATA_NAME"
+    rm -rf "$DATA_HOME/linux-desktop-apps/$APP_DATA_NAME"
   done
-  rm -f "$DATA_HOME/applications/$DEB_PACKAGE.desktop"
-  rm -f "${XDG_BIN_HOME:-$HOME/.local/bin}/$DEB_PACKAGE"
-  rm -rf "$DATA_HOME/linux-desktop-apps/$DEB_PACKAGE"
 fi
 
 if command -v update-desktop-database >/dev/null 2>&1; then

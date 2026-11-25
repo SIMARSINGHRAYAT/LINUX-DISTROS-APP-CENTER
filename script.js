@@ -21,20 +21,6 @@ const microsoftAppCommands = {
   whiteboard: microsoftCommands('Whiteboard')
 };
 
-function microsoftBundleCommands() {
-  const apps = Object.values(microsoftAppCommands);
-  const buildCommand = (action, distro) => apps
-    .map((commands) => commands[`${distro}${action[0].toUpperCase()}${action.slice(1)}`])
-    .join(' && ');
-
-  return {
-    ubuntuInstall: buildCommand('install', 'ubuntu'),
-    ubuntuUninstall: buildCommand('uninstall', 'ubuntu'),
-    debianInstall: buildCommand('install', 'debian'),
-    debianUninstall: buildCommand('uninstall', 'debian')
-  };
-}
-
 const SOCIAL_APP_BASE_URL = 'https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Social-Media-Apps';
 
 function socialCommands(appDirectory) {
@@ -152,13 +138,6 @@ const categories = [
         icon: './csc-main/logo/Microsoft-whiteboard-94.png',
         readme: './csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/README.md',
         commands: microsoftAppCommands.whiteboard
-      },
-      {
-        name: 'Install all',
-        slug: 'microsoft-all',
-        icon: './csc-main/logo/microsoft-azure.svg',
-        description: 'Install or remove all eight Microsoft desktop apps on Ubuntu or Debian with one command.',
-        commands: microsoftBundleCommands()
       }
     ]
   },
@@ -301,7 +280,7 @@ function getIconSrc(name) {
 
 function buildFloatingLogos() {
   const container = document.getElementById('floating-logos');
-  if (!container) return;
+  if (!container || !document.body.classList.contains('landing-page')) return;
   container.innerHTML = '';
 
   const total = 40;
@@ -418,7 +397,7 @@ function buildReadmeBlocks(app) {
 
     if (availableDistros.length > 0) {
       const tabsHtml = availableDistros.map((d, index) => `
-        <button class="distro-tab ${index === 0 ? 'active' : ''}" type="button" data-distro-tab="${d.key}">${d.name}</button>
+        <button class="distro-tab ${index === 0 ? 'active' : ''}" type="button" role="tab" aria-selected="${index === 0}" data-distro-tab="${d.key}">${d.name}</button>
       `).join('');
 
       const panelsHtml = availableDistros.map((d, index) => `
@@ -531,7 +510,10 @@ function renderAppDetail() {
   document.querySelectorAll('[data-distro-tab]').forEach((button) => {
     button.addEventListener('click', () => {
       const distro = button.dataset.distroTab;
-      document.querySelectorAll('[data-distro-tab]').forEach((tab) => tab.classList.toggle('active', tab === button));
+      document.querySelectorAll('[data-distro-tab]').forEach((tab) => {
+        tab.classList.toggle('active', tab === button);
+        tab.setAttribute('aria-selected', String(tab === button));
+      });
       document.querySelectorAll('[data-distro-panel]').forEach((panel) => panel.classList.toggle('active', panel.dataset.distroPanel === distro));
     });
   });

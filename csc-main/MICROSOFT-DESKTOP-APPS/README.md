@@ -9,4 +9,4 @@
 - [Microsoft OneDrive](OneDrive/README.md)
 - [Microsoft Whiteboard](Whiteboard/README.md)
 
-Uninstalling a Microsoft desktop wrapper purges its Debian or Ubuntu package and removes that app's local settings, cached web session, sign-in cookies, and window state. It does not delete files in Downloads or data stored in a Microsoft account or cloud service.
+Uninstalling a Microsoft desktop wrapper purges its Debian or Ubuntu package, stops the current user's processes running from the app's installed package, and removes matching launchers, local settings, cached web sessions, sign-in cookies, and window state. The uninstaller also checks package-name variants used by older builds. It does not delete files in Downloads or data stored in a Microsoft account or cloud service.
