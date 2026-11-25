@@ -1,0 +1,34 @@
+{
+  "name": "microsoft-onedrive-desktop",
+  "version": "1.0.0",
+  "description": "Unofficial Electron wrapper around Microsoft's official OneDrive web application.",
+  "main": "main.js",
+  "homepage": "https://www.microsoft365.com/launch/onedrive",
+  "author": { "name": "Microsoft Desktop Apps contributors", "email": "maintainers@example.com" },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "validate": "node --check main.js && node --check preload.js",
+    "build": "electron-builder --linux deb",
+    "build:deb": "electron-builder --linux deb",
+    "package": "npm run build:deb"
+  },
+  "devDependencies": { "electron": "43.3.0", "electron-builder": "26.0.12" },
+  "build": {
+    "appId": "com.microsoft.desktop.onedrive",
+    "productName": "Microsoft OneDrive",
+    "asar": true,
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "offline.html", "assets/**/*", "package.json"],
+    "linux": {
+      "target": ["deb"],
+      "category": "Network;FileTransfer;Office;",
+      "icon": "assets/icons",
+      "synopsis": "Microsoft OneDrive desktop wrapper",
+      "artifactName": "Microsoft-OneDrive-${version}-${arch}.${ext}"
+    }
+  },
+  "engines": { "node": ">=22.12.0" }
+}

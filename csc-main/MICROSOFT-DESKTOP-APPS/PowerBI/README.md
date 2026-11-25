@@ -1,88 +1,15 @@
 # Microsoft Power BI Desktop
 
-Unofficial desktop wrapper for Microsoft Power BI on Linux distributions.
+The Debian package opens the official Power BI service and keeps its Microsoft sign-in session between launches.
 
-## Ubuntu Installation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
-```
-
-## Debian Linux Installation
+## Debian installation
 
 ```bash
 curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=debian bash
 ```
 
-The installer builds and installs a native Debian `.deb` package. Sign in or create a Microsoft account from the official Power BI sign-in page; the session is retained between launches.
-
-## Linux Mint Installation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=mint bash
-```
-
-If APT update fails while a CD-ROM source is configured, the Mint installer warns and continues using available package indexes. If prerequisite installation still fails, disable the CD-ROM/DVD source in **Software Sources**, refresh the package lists, and retry.
-If the system Node.js version is older than 22.12, the installer downloads the matching Node.js 22 runtime and verifies its SHA-256 checksum before building.
-
-## Fedora Linux Installation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=fedora bash
-```
-
-If Fedora mirror metadata is temporarily unavailable, the installer will keep going as long as the required build tools are already installed, and it will fall back to an AppImage build instead of aborting on a transient `dnf` repo issue.
-
-## Arch Linux Installation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=arch bash
-```
-
-## Kali Linux Installation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/install.sh | LINUX_DESKTOP_DISTRO=kali bash
-```
-
-## Ubuntu Uninstallation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
-```
-
-## Debian Uninstallation
+## Debian uninstallation
 
 ```bash
 curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=debian bash
-```
-
-## Debian Linux Uninstallation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=debian bash
-```
-
-## Linux Mint Uninstallation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=mint bash
-```
-
-## Fedora Linux Uninstallation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=fedora bash
-```
-
-## Arch Linux Uninstallation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=arch bash
-```
-
-## Kali Linux Uninstallation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/PowerBI/uninstall.sh | LINUX_DESKTOP_DISTRO=kali bash
 ```

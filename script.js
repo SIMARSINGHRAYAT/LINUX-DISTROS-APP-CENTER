@@ -1,54 +1,34 @@
 const MICROSOFT_APP_BASE_URL = 'https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS';
 
 function microsoftCommands(appDirectory) {
-  const install = (distro) => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/${appDirectory}/install.sh | LINUX_DESKTOP_DISTRO=${distro} bash`;
-  const uninstall = () => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/${appDirectory}/uninstall.sh | bash`;
+  const command = (action) => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/${appDirectory}/${action}.sh | LINUX_DESKTOP_DISTRO=debian bash`;
   return {
-    ubuntuInstall: install('ubuntu'),
-    ubuntuUninstall: uninstall(),
-    debianInstall: install('debian'),
-    debianUninstall: uninstall(),
-    mintInstall: install('mint'),
-    mintUninstall: uninstall(),
-    fedoraInstall: install('fedora'),
-    fedoraUninstall: uninstall(),
-    archInstall: install('arch'),
-    archUninstall: uninstall(),
-    kaliInstall: install('kali'),
-    kaliUninstall: uninstall()
+    debianInstall: command('install'),
+    debianUninstall: command('uninstall')
   };
-}
-
-function microsoftPowerBiCommands() {
-  const command = (distro, action) => `curl -fsSL ${MICROSOFT_APP_BASE_URL}/PowerBI/${action}.sh | LINUX_DESKTOP_DISTRO=${distro} bash`;
-  return Object.fromEntries(
-    ['ubuntu', 'debian', 'mint', 'fedora', 'arch', 'kali'].flatMap((distro) => [
-      [`${distro}Install`, command(distro, 'install')],
-      [`${distro}Uninstall`, command(distro, 'uninstall')]
-    ])
-  );
 }
 
 const microsoftAppCommands = {
   teams: microsoftCommands('Teams'),
-  powerbi: microsoftPowerBiCommands(),
-  whiteboard: microsoftCommands('Whiteboard'),
+  powerbi: microsoftCommands('PowerBI'),
   outlook: microsoftCommands('Outlook'),
-  azure: microsoftCommands('Azure')
+  powerAutomate: microsoftCommands('PowerAutomate'),
+  powerApps: microsoftCommands('PowerApps'),
+  azure: microsoftCommands('Azure'),
+  onedrive: microsoftCommands('OneDrive'),
+  whiteboard: microsoftCommands('Whiteboard')
 };
 
 function microsoftBundleCommands() {
   const apps = Object.values(microsoftAppCommands);
-  const buildCommand = (distro, action) => apps
-    .map((commands) => commands[`${distro}${action[0].toUpperCase()}${action.slice(1)}`])
+  const buildCommand = (action) => apps
+    .map((commands) => commands[`debian${action[0].toUpperCase()}${action.slice(1)}`])
     .join(' && ');
 
-  return Object.fromEntries(
-    ['ubuntu', 'debian', 'mint', 'fedora', 'arch', 'kali'].flatMap((distro) => [
-      [`${distro}Install`, buildCommand(distro, 'install')],
-      [`${distro}Uninstall`, buildCommand(distro, 'uninstall')]
-    ])
-  );
+  return {
+    debianInstall: buildCommand('install'),
+    debianUninstall: buildCommand('uninstall')
+  };
 }
 
 const SOCIAL_APP_BASE_URL = 'https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/Social-Media-Apps';
@@ -117,18 +97,31 @@ const categories = [
         commands: microsoftAppCommands.powerbi
       },
       {
-        name: 'Whiteboard',
-        slug: 'whiteboard',
-        icon: './csc-main/logo/Microsoft-whiteboard-94.png',
-        readme: './csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/README.md',
-        commands: microsoftAppCommands.whiteboard
-      },
-      {
         name: 'Outlook',
         slug: 'outlook',
         icon: './csc-main/logo/Microsoft_Office_Outlook_Logo_512px.png',
         readme: './csc-main/MICROSOFT-DESKTOP-APPS/Outlook/README.md',
         commands: microsoftAppCommands.outlook
+      },
+      {
+        name: 'Power Automate',
+        slug: 'power-automate',
+        icon: './csc-main/logo/icons8-microsoft-power-automate-2020-96.png',
+        readme: './csc-main/MICROSOFT-DESKTOP-APPS/PowerAutomate/README.md',
+        description: 'Build and manage workflows in the official Power Automate portal.',
+        url: 'https://make.powerautomate.com/',
+        websiteUrl: 'https://www.microsoft.com/en-in/power-platform/products/power-automate',
+        commands: microsoftAppCommands.powerAutomate
+      },
+      {
+        name: 'Power Apps',
+        slug: 'power-apps',
+        icon: './csc-main/logo/icons8-microsoft-power-apps-2020-96.png',
+        readme: './csc-main/MICROSOFT-DESKTOP-APPS/PowerApps/README.md',
+        description: 'Build and use business apps in the official Power Apps portal.',
+        url: 'https://make.powerapps.com/',
+        websiteUrl: 'https://www.microsoft.com/en-in/power-platform/products/power-apps',
+        commands: microsoftAppCommands.powerApps
       },
       {
         name: 'Microsoft Azure',
@@ -139,10 +132,28 @@ const categories = [
         commands: microsoftAppCommands.azure
       },
       {
+        name: 'Microsoft OneDrive',
+        slug: 'onedrive',
+        icon: './csc-main/logo/Microsoft-Onedrive--Streamline-Svg-Logos.png',
+        readme: './csc-main/MICROSOFT-DESKTOP-APPS/OneDrive/README.md',
+        description: 'Store, access, and share files online with Microsoft OneDrive.',
+        url: 'https://www.microsoft365.com/launch/onedrive',
+        websiteUrl: 'https://www.microsoft.com/en-in/microsoft-365/onedrive/online-cloud-storage',
+        actionLabel: 'Open OneDrive',
+        commands: microsoftAppCommands.onedrive
+      },
+      {
+        name: 'Whiteboard',
+        slug: 'whiteboard',
+        icon: './csc-main/logo/Microsoft-whiteboard-94.png',
+        readme: './csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/README.md',
+        commands: microsoftAppCommands.whiteboard
+      },
+      {
         name: 'Install all',
         slug: 'microsoft-all',
         icon: './csc-main/logo/microsoft-azure.svg',
-        description: 'Install or remove all five Microsoft desktop apps with one command.',
+        description: 'Install or remove all eight Microsoft desktop apps on Debian with one command.',
         commands: microsoftBundleCommands()
       }
     ]
@@ -224,6 +235,9 @@ const floatingLogosList = [
   './csc-main/logo/Kaggle.png',
   './csc-main/logo/leetcode.png',
   './csc-main/logo/microsoft-azure.svg',
+  './csc-main/logo/Microsoft-Onedrive--Streamline-Svg-Logos.png',
+  './csc-main/logo/icons8-microsoft-power-apps-2020-96.png',
+  './csc-main/logo/icons8-microsoft-power-automate-2020-96.png',
   './csc-main/logo/Microsoft-Power-Bi--Streamline-Svg-Logos.png',
   './csc-main/logo/Microsoft-whiteboard-94.png',
   './csc-main/logo/Microsoft_Office_Outlook_Logo_512px.png',
@@ -258,6 +272,9 @@ function getIconSrc(name) {
     mxplayer: './csc-main/logo/mx-player.png',
     'microsoft teams': './csc-main/logo/Microsoft_Office_Teams_Logo_512px.png',
     'power bi': './csc-main/logo/Microsoft-Power-Bi--Streamline-Svg-Logos.png',
+    'microsoft onedrive': './csc-main/logo/Microsoft-Onedrive--Streamline-Svg-Logos.png',
+    'power apps': './csc-main/logo/icons8-microsoft-power-apps-2020-96.png',
+    'power automate': './csc-main/logo/icons8-microsoft-power-automate-2020-96.png',
     whiteboard: './csc-main/logo/Microsoft-whiteboard-94.png',
     outlook: './csc-main/logo/Microsoft_Office_Outlook_Logo_512px.png',
     roboflow: './csc-main/logo/Roboflow.png',
@@ -456,16 +473,24 @@ function renderAppDetail() {
       <div class="detail-actions">
         <a class="back-btn" href="./apps.html?category=${encodeURIComponent(category.id)}">Back to apps</a>
         ${app.url ? `<a class="back-btn" href="${escapeHtml(app.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(app.actionLabel || `Open ${app.name}`)}</a>` : ''}
+        ${app.websiteUrl ? `<a class="back-btn" href="${escapeHtml(app.websiteUrl)}" target="_blank" rel="noopener noreferrer">Product information</a>` : ''}
       </div>
 
-      <div class="detail-intro">
-        <p class="eyebrow">Installation commands</p>
-        <h2>${escapeHtml(app.name)} installation commands</h2>
-      </div>
-
-      <div class="copy-group">
-        ${buildReadmeBlocks(app)}
-      </div>
+      ${app.url && !app.commands && !app.installCommand ? `
+        <div class="detail-intro">
+          <p class="eyebrow">Online access</p>
+          <h2>Use ${escapeHtml(app.name)} online</h2>
+          <p>${escapeHtml(app.description || `Open ${app.name} in your browser.`)}</p>
+        </div>
+      ` : `
+        <div class="detail-intro">
+          <p class="eyebrow">Installation commands</p>
+          <h2>${escapeHtml(app.name)} installation commands</h2>
+        </div>
+        <div class="copy-group">
+          ${buildReadmeBlocks(app)}
+        </div>
+      `}
     </article>
   `;
 

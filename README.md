@@ -68,6 +68,9 @@ While Linux dominates the server, cloud, and engineering landscapes, desktop use
 * **Microsoft Power BI Desktop** — Dynamic data modeling, interactive business analytics, and reporting.
 * **Microsoft Teams** — Unified enterprise communication, channel chat, and HD video meetings.
 * **Microsoft Outlook** — Corporate email, integrated calendar scheduling, and contact management.
+* **Microsoft Power Automate** — Workflow automation through Microsoft's Power Platform.
+* **Microsoft Power Apps** — Low-code business app creation through Microsoft's Power Platform.
+* **Microsoft OneDrive** — Cloud file storage, access, and sharing through the official online service.
 * **Microsoft Azure Portal** — Centralized cloud infrastructure monitoring and resource orchestration.
 * **Microsoft Whiteboard** — Collaborative digital canvas for agile architecture design and brainstorming.
 

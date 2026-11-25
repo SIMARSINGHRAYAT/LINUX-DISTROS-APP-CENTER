@@ -1,39 +1,15 @@
 # Microsoft Whiteboard Desktop
 
-## Ubuntu Installation
+The Debian package opens the official Whiteboard service and keeps its Microsoft sign-in session between launches.
 
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/install.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
-```
-
-## Debian Installation
+## Debian installation
 
 ```bash
 curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/install.sh | LINUX_DESKTOP_DISTRO=debian bash
 ```
 
-The installer builds and installs a native Debian `.deb` package. Sign in or create a Microsoft account from the official Whiteboard sign-in page; the session is retained between launches.
-
-## Kali Linux Installation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/install.sh | LINUX_DESKTOP_DISTRO=kali bash
-```
-
-## Ubuntu Uninstallation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/uninstall.sh | LINUX_DESKTOP_DISTRO=ubuntu bash
-```
-
-## Debian Uninstallation
+## Debian uninstallation
 
 ```bash
 curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/uninstall.sh | LINUX_DESKTOP_DISTRO=debian bash
-```
-
-## Kali Linux Uninstallation
-
-```bash
-curl -fsSL https://github.com/SIMARSINGHRAYAT/LINUX-DESKTOP-APPS/raw/refs/heads/main/csc-main/MICROSOFT-DESKTOP-APPS/Whiteboard/uninstall.sh | LINUX_DESKTOP_DISTRO=kali bash
 ```

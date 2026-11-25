@@ -1,0 +1,34 @@
+{
+  "name": "microsoft-power-automate-desktop",
+  "version": "1.0.0",
+  "description": "Unofficial Electron wrapper around Microsoft's official Power Automate portal.",
+  "main": "main.js",
+  "homepage": "https://make.powerautomate.com/",
+  "author": { "name": "Microsoft Desktop Apps contributors", "email": "maintainers@example.com" },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "validate": "node --check main.js && node --check preload.js",
+    "build": "electron-builder --linux deb",
+    "build:deb": "electron-builder --linux deb",
+    "package": "npm run build:deb"
+  },
+  "devDependencies": { "electron": "43.3.0", "electron-builder": "26.0.12" },
+  "build": {
+    "appId": "com.microsoft.desktop.powerautomate",
+    "productName": "Microsoft Power Automate",
+    "asar": true,
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "offline.html", "assets/**/*", "package.json"],
+    "linux": {
+      "target": ["deb"],
+      "category": "Office;Development;",
+      "icon": "assets/icons",
+      "synopsis": "Microsoft Power Automate desktop wrapper",
+      "artifactName": "Microsoft-Power-Automate-${version}-${arch}.${ext}"
+    }
+  },
+  "engines": { "node": ">=22.12.0" }
+}
